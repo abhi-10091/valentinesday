@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Valentine'sDay</title>
+  <link rel="icon" href="image.png" type="image/png">
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: linear-gradient(to bottom, #3e023e 0%, #bd2294 99%, #9d1db1 100%);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #333;
+      overflow-x: hidden;
+    }
+
+    .container {
+      position: relative;
+      text-align: center;
+      padding: 40px 20px;
+      max-width: 1100px;
+      margin: 0 auto;
+      z-index: 10;
+    }
+
+    h1 {
+      font-size: 4.5rem;
+      color: #e91e63;
+      margin: 20px 0 10px;
+      text-shadow: 0 0 15px rgba(233,30,99,0.5);
+    }
+
+    .heart-beat {
+      color: #e91e63;
+      font-size: 6rem;
+      animation: beat 1.3s infinite;
+      display: inline-block;
+    }
+
+    @keyframes beat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+
+    .letter {
+      max-width: 700px;
+      margin: 40px auto;
+      background: rgba(238, 63, 221, 0.92);
+      padding: 45px;
+      border-radius: 25px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.18);
+      font-size: 1.35rem;
+      line-height: 1.7;
+      text-align: left;
+    }
+
+    .hearts-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .falling-heart {
+      position: absolute;
+      font-size: 2rem;
+      color: #e91e63;
+      user-select: none;
+      animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-120%) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(120vh) rotate(720deg);
+        opacity: 0;
+      }
+    }
+
+    .falling-heart:nth-child(1)  { left: 10%; animation-duration: 14s; animation-delay: 0s; }
+    .falling-heart:nth-child(2)  { left: 25%; animation-duration: 18s; animation-delay: 3s; }
+    .falling-heart:nth-child(3)  { left: 40%; animation-duration: 11s; animation-delay: 1s; }
+    .falling-heart:nth-child(4)  { left: 55%; animation-duration: 16s; animation-delay: 5s; }
+    .falling-heart:nth-child(5)  { left: 70%; animation-duration: 13s; animation-delay: 2s; }
+    .falling-heart:nth-child(6)  { left: 85%; animation-duration: 15s; animation-delay: 7s; }
+    .falling-heart:nth-child(7)  { left: 15%; animation-duration: 20s; animation-delay: 4s; }
+    .falling-heart:nth-child(8)  { left: 35%; animation-duration: 12s; animation-delay: 6s; }
+
+    .coupons {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      margin: 60px auto;
+      max-width: 1200px;
+    }
+
+    .coupon {
+      background: white;
+      border-radius: 18px;
+      padding: 30px 20px;
+      box-shadow: 0 10px 30px rgba(233,30,99,0.18);
+      border: 3px dashed #e91e63;
+      text-align: center;
+      transition: transform 0.3s;
+    }
+
+    .coupon:hover {
+      transform: translateY(-10px);
+    }
+
+    .coupon h3 {
+      color: #e91e63;
+      margin: 0 0 15px;
+      font-size: 1.6rem;
+    }
+
+    .coupon small {
+      color: #777;
+      display: block;
+      margin-top: 12px;
+    }
+
+    h2 {
+      color: #e91e63;
+      margin: 70px 0 40px;
+      font-size: 3rem;
+      text-shadow: 0 0 10px rgba(233,30,99,0.4);
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 25px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 20px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.5s;
+    }
+
+    .caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0,0,0,0.65);
+      color: white;
+      padding: 20px;
+      text-align: center;
+      transform: translateY(100%);
+      transition: transform 0.4s;
+      font-size: 1.1rem;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.1);
+    }
+
+    .gallery-item:hover .caption {
+      transform: translateY(0);
+    }
+
+    iframe {
+      border-radius: 15px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+      margin: 60px auto 40px;
+      display: block;
+    }
+
+    footer {
+      margin: 80px 0 40px;
+      font-size: 1.2rem;
+      color: #000000;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="hearts-container">
+    <div class="falling-heart">❤️</div>
+    <div class="falling-heart">💕</div>
+    <div class="falling-heart">💖</div>
+    <div class="falling-heart">💗</div>
+    <div class="falling-heart">💓</div>
+    <div class="falling-heart">💞</div>
+    <div class="falling-heart">💘</div>
+    <div class="falling-heart">❤️</div>
+  </div>
+
+  <div class="container">
+    <h1>Happy Valentine's Day, Aashi <span class="heart-beat">💓</span></h1>
+
+    <div class="letter">
+      <p style="font-style: italic"> TO - my everything </p>
+      <b>
+      <p>I dont know why people celebrate tdy as Valentines Day, but for me every single day since you came into my life has been Valentines Day, we should celebrate everyday then lmao 😂💖. But like srsly, every moment I spend with you everything feels unreal, its almost like Im living the best dream ever. I feel like I'm the luckiest person alive, because you made my life go from this "🖤🩶🤍" to this "💖💗💞💕", and no one had ever done that to me, so I'm so damn grateful to have you as my partner for the rest of my life. 🤞😙</p>
+      <p>I still think about our first interaction, I asked you abt anime and stuff, but the truth is I wasnt interested in all that anime bs, I just wanted to talk to you and stuff, like it was so hard to muster up the courage and text you😭😭😭. Joining NPS was the best decision of my life not because of anything else, but because it led me straight to you. Sometimes I'll be telling "Oh I wish I went to some other school, this schools ass.", but deep down ik im lying to myself 😭😭. I can never ever imagine not joining NPS and not meeting you, good only my dad didnt let me go to preci, or else my life would still be like this "🤍🩶🖤". A life without you is like machli with no paani, impossible 😭. Tum mere bure din ko accha bana te ho aur acche din ko aur bhi accha bana te ho, ab tum hi bolo ki mei aur kya mang sakta hu😭😭😭. Your my safe place, my home, my everything.😊</p>
+      <p>Thank you for always taking care of me, even when I don’t deserve it. Thank you for the late night talks, for staying alongside when I’m low, for making me feel wanted and loved every single day. Thank you for being patient with me, for choosing me again and again and for being my biggest supporter. The last few months might have been a lil rough for us, some stupid ahh fights over small things, and after all that we are still together accepting each other. That means everything to me.</p>
+      <p>I promise you that Ill keep working on us even when things are bad. Less arguing, more understanding. Less overthinking, more communicating. Im never leaving you, mera wada pakka hai. Youre stuck with me forever, sorry 😭❤️
+I cant wait to make a million more memories with you, late night drives, traveling together, building our little world, etc.
+I LOVE YOU SOOOOOOOOOOOOO MUCH AASHI. More than words could ever say. Your my dream come true, my forever, my everything. I couldnt ask for anything more in this life because I already have you.
+Happy Valentines Day, my love. You’re my heart. Always. 💖💖💖,</p></b>
+      <p style="margin-top: 25px; font-style: italic; text-align: right;">FROM - your everything</p>
+    </div>
+ <h1>Us 🥰 - </h1>
+    <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin: 50px 0;">
+      <img src="imag2e.png" style="width: 220px; height: 220px; object-fit: cover; border-radius: 20px; border: 6px solid rgb(230, 137, 241); box-shadow: 0 5px 15px rgba(0,0,0,0.2);">
+      <img src="12.png" style="width: 220px; height: 220px; object-fit: cover; border-radius: 20px; border: 6px solid rgb(230, 137, 241); box-shadow: 0 5px 15px rgba(0,0,0,0.2);">
+      <img src="image2.png" style="width: 220px; height: 220px; object-fit: cover; border-radius: 20px; border: 6px solid rgb(230, 137, 241); box-shadow: 0 5px 15px rgba(0,0,0,0.2);">
+      <img src="image copy.png" style="width: 220px; height: 220px; object-fit: cover; border-radius: 20px; border: 6px solid rgb(230, 137, 241); box-shadow: 0 5px 15px rgba(0,0,0,0.2);">
+    </div>
+
+    <h2>6 Things I love about you 💌</h2>
+    <div class="coupons">
+      <div class="coupon">
+        <h3>Patience</h3>
+        <p>You handle my messups so nicely, like full calm and stuff, by not judging me and stuff. With you I can completely be myself.</p>
+        <small>I love you 😙</small>
+      </div>
+      <div class="coupon">
+        <h3>Mistakes</h3>
+        <p>Ive screwed up more than once, twice, etc and yet you still choose us, choose me to forgive me every day.</p>
+        <small>I love you 💗</small>
+      </div>
+      <div class="coupon">
+        <h3>Romantic</h3>
+        <p>The notes & songs you put on your insta notes, the stories, random ilys, reel spamming, etc, you just know how to make my day.</p>
+        <small>I love you 🥰</small>
+      </div>
+      <div class="coupon">
+        <h3>Organised</h3>
+        <p>You keep everything in perfect order even tho I dont do shit, or plan out anything. Trust me if I had a mind like yours I would.</p>
+        <small>I love you 😝</small>
+      </div>
+      <div class="coupon">
+        <h3>Home</h3>
+        <p>With you I can finally be myself, your the one person in the entire universe who knows all of me and still stays.
+You feel like the safest, warmest place in the world, the only one I trust with everything.</p>
+        <small>I love you 😸</small>
+      </div>
+      <div class="coupon">
+        <h3>Care</h3>
+        <p>The check ins, good morning & good night texts even when your upset, taking good care of me, making me feel loved.</p>
+        <small>I love you 💞</small>
+      </div>
+    </div>
+
+<div style="text-align: center; margin: 60px auto; max-width: 500px;">
+  <iframe 
+    style="border-radius:12px; width: 100%; max-width: 500px; display: block; margin: 0 auto; box-shadow: 0 5px 20px rgba(0,0,0,0.2);" 
+    src="https://open.spotify.com/embed/track/6IPwKM3fUUzlElbvKw2sKl?utm_source=generator" 
+    width="100%" 
+    height="152" 
+    frameborder="0" 
+    allowfullscreen="" 
+    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+    loading="lazy">
+  </iframe>
+  <footer ><b>Made with all my love, just for you 💓
+    - Abhi</b></footer>
+</div>
+    </div>
+  </div>
+</body>
+</html>
